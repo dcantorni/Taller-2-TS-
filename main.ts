@@ -13,7 +13,7 @@ function renderSeriesInTable(seriesList: Serie[]): void {
     let trElement = document.createElement("tr");
     trElement.innerHTML = `
       <th scope="row">${serie.id}</th>
-      <td>${serie.name}</td>
+      <td><a href="${serie.url}">${serie.name}</a></td>
       <td>${serie.channel}</td>
       <td>${serie.season}</td>
     `;
@@ -26,10 +26,4 @@ function getAverageSeasons(seriesList: Serie[]): number {
   let totalSeasons = 0;
   seriesList.forEach((s) => totalSeasons += s.season);
   return totalSeasons / seriesList.length;
-}
-
-function clearSeriesInTable(): void {
-  while (seriesTbody.firstChild) {
-    seriesTbody.removeChild(seriesTbody.firstChild);
-  }
 }
